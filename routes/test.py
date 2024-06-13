@@ -19,6 +19,6 @@ async def get_test(request: Request, db: Session = Depends(get_session)):
 async def post_test(request: Request, db: Session = Depends(get_session)):
     client_host = request.client.host
     body = await request.body()
-    create_log(db=db, ip_address=client_host)
+    create_log(db=db, ip_address=client_host, data=body)
     data = "Okay"
     return Response(content=data, media_type="text/plain")
