@@ -4,7 +4,11 @@ from fastapi.responses import JSONResponse
 
 import sys, traceback
 
+from routes import test
+
 app = FastAPI()
+
+app.include_router(test.router)
 
 async def catch_exceptions_middleware(request: Request, call_next):
     try:
