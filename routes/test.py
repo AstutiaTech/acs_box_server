@@ -12,7 +12,7 @@ router = APIRouter(
 async def get_test(request: Request, db: Session = Depends(get_session)):
     client_host = request.client.host
     create_log(db=db, ip_address=client_host)
-    data = "Okay"
+    data = "R311100010000010030911202405181612098"
     return Response(content=data, media_type="text/plain")
 
 @router.post("/post_test")
@@ -20,5 +20,5 @@ async def post_test(request: Request, db: Session = Depends(get_session)):
     client_host = request.client.host
     body = await request.body()
     create_log(db=db, ip_address=client_host, data=body)
-    data = "Okay"
+    data = "R311100010000010030911202405181612098"
     return Response(content=data, media_type="text/plain")
