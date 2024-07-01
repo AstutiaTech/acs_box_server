@@ -32,7 +32,5 @@ async def form_test(request: Request, db: Session = Depends(get_session), body: 
     # data = "R31110001000001003091120240518161209819383728463728818643875"
     # data = "C311100010000010030900202405181612001"
     data = "C311100010000010010900202405181612001"
-    str_len = len(data)
-    fin_len = 60 - str_len
-    data = data.ljust(fin_len, '0')
+    data = data.ljust(60, '0')
     return Response(content=data, media_type="text/plain")
