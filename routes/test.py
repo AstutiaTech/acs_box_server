@@ -28,6 +28,10 @@ async def post_test(request: Request, db: Session = Depends(get_session)):
 async def form_test(request: Request, db: Session = Depends(get_session), body: str = Form()):
     client_host = request.client.host
     create_log(db=db, ip_address=client_host, data=body)
-    data = "R311100010000010030911202405181612098"
-    data = "R31110001000001003091120240518161209819383728463728818643875"
+    # data = "R311100010000010030911202405181612098"
+    # data = "R31110001000001003091120240518161209819383728463728818643875"
+    data = "C311100010000010030900202405181612001"
+    str_len = len(data)
+    fin_len = 60 - str_len
+    data = data.ljust(fin_len, '0')
     return Response(content=data, media_type="text/plain")
